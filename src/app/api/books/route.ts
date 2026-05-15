@@ -52,7 +52,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, content, language } = body;
+    const { title, content, language, grade, subject, lesson_number, chapter, author } = body;
 
     if (!title || !content) {
       return NextResponse.json(
@@ -68,6 +68,11 @@ export async function POST(request: Request) {
       title,
       content,
       language: language || 'zh-CN',
+      grade,
+      subject,
+      lesson_number,
+      chapter,
+      author,
       created_at: new Date().toISOString(),
     };
 

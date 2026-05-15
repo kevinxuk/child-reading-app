@@ -137,6 +137,12 @@ export default function ReadPage() {
   const handleStartReading = useCallback(() => {
     if (!currentBook) return;
 
+    // 重新跟读时重置当前段落的完成状态
+    setCompletedParagraphs(prev => {
+      const next = [...prev];
+      next[currentParagraph] = false;
+      return next;
+    });
     setRecognizedText('');
     setShowResult(false);
     clearRecording();
@@ -397,24 +403,27 @@ export default function ReadPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="sticky top-0 z-40 bg-white shadow-sm">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-          <button
-            onClick={() => router.push('/books')}
-            className="text-blue-500 hover:underline text-sm"
-          >
-            ← 返回书架
-          </button>
-          <p className="text-sm text-gray-500">
-            第 {currentParagraph + 1} / {paragraphs.length} 段
-            {isCurrentCompleted && <span className="ml-2 text-green-500">✓</span>}
-          </p>
-          <button
-            onClick={() => setShowTTSConfig(true)}
-            className="px-3 py-1.5 text-sm bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition flex items-center gap-1"
-          >
-            ⚙️ 朗读设置
-          </button>
-        </div>
+     <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+       <p className="text-sm text-gray-500">
+         第 {currentParagraph + 1} / {paragraphs.length} 段
+         {isCurrentCompleted && <span className="ml-2 text-green-500">✓</span>}
+       </p>
+       <div className="flex items-center gap-2">
+         <button
+           onClick={() => setShowTTSConfig(true)}
+           className="text-sm px-3 py-1.5 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition flex items-center gap-1"
+           title="大模型 TTS 设置"
+         >
+           🤖 {ttsConfig.enabled ? '大模型' : '浏览器TTS'}
+         </button>
+         <button
+           onClick={() => router.push('/books')}
+           className="text-blue-500 hover:underline text-sm"
+         >
+           ← 书架
+         </button>
+       </div>
+     </div>
         {ttsConfig.enabled && (
           <div className="max-w-3xl mx-auto px-4 pb-2">
             <div className="flex items-center gap-2 text-xs text-purple-600 bg-purple-50 px-3 py-1.5 rounded-lg">
@@ -462,11 +471,11 @@ export default function ReadPage() {
             {paragraphs[currentParagraph]}
           </p>
 
-          <div className="flex gap-4 mb-6 flex-wrap">
+          <div className="flex gap-2 sm:gap-4 mb-6 flex-wrap">
             <button
               onClick={handlePlayParagraph}
               disabled={isPlaying}
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50"
+              className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50 text-sm sm:text-base"
             >
               {isPlaying ? '播放中...' : '🔊 听朗读'}
             </button>
@@ -474,24 +483,23 @@ export default function ReadPage() {
             {!isRecording ? (
               <button
                 onClick={handleStartReading}
-                disabled={isCurrentCompleted}
-                className="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition text-sm sm:text-base"
               >
-                🎤 开始跟读
+                {isCurrentCompleted ? '🔄 重读' : '🎤 跟读'}
               </button>
             ) : (
               <button
                 onClick={handleStopReading}
-                className="px-6 py-3 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition"
+                className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition text-sm sm:text-base"
               >
-                ⏹ 结束跟读
+                ⏹ 结束
               </button>
             )}
 
             {isCurrentCompleted && !isRecording && !isLastParagraph && (
               <button
                 onClick={handleNextParagraph}
-                className="px-6 py-3 bg-purple-500 text-white rounded-lg font-medium hover:bg-purple-600 transition"
+                className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-purple-500 text-white rounded-lg font-medium hover:bg-purple-600 transition text-sm sm:text-base"
               >
                 下一段 →
               </button>
@@ -499,8 +507,29 @@ export default function ReadPage() {
           </div>
 
           {isCurrentCompleted && !isRecording && (
-            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-              ✅ 本段已跟读完成
+            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-green-700 text-sm">✅ 本段已跟读完成</span>
+                <div className="flex items-center gap-3">
+                  {paragraphScores.filter(ps => ps.paragraphIndex === currentParagraph).length > 0 && (() => {
+                    const scores = paragraphScores.filter(ps => ps.paragraphIndex === currentParagraph);
+                    const last = scores[scores.length - 1];
+                    return (
+                      <>
+                        <span className="text-sm font-bold text-yellow-600">
+                          上次得分：{last.result.total_score}分
+                        </span>
+                        <button
+                          onClick={() => window.location.href = `/books/${bookId}/replays`}
+                          className="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs rounded-lg hover:bg-purple-200 transition font-medium"
+                        >
+                          📋 查看回放
+                        </button>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
             </div>
           )}
 
@@ -576,23 +605,23 @@ export default function ReadPage() {
           </div>
         )}
 
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-2 sm:gap-4">
           <button
             onClick={handlePrevParagraph}
             disabled={currentParagraph === 0}
-            className="px-6 py-3 border rounded-lg font-medium hover:bg-gray-100 transition disabled:opacity-50"
+            className="flex-1 sm:flex-none px-4 sm:px-6 py-3 border rounded-lg font-medium hover:bg-gray-100 transition disabled:opacity-50 text-sm sm:text-base"
           >
             ← 上一段
           </button>
           {isLastParagraph && isCurrentCompleted ? (
-            <div className="px-6 py-3 text-green-600 font-medium">
+            <div className="flex-1 sm:flex-none px-4 sm:px-6 py-3 text-green-600 font-medium text-center text-sm sm:text-base">
               ✅ 所有段落已完成
             </div>
           ) : isLastParagraph ? (
             <button
               onClick={() => {}}
               disabled
-              className="px-6 py-3 bg-gray-300 text-gray-500 rounded-lg font-medium cursor-not-allowed"
+              className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-gray-300 text-gray-500 rounded-lg font-medium cursor-not-allowed text-sm sm:text-base"
             >
               请完成跟读
             </button>
@@ -600,7 +629,7 @@ export default function ReadPage() {
             <button
               onClick={handleNextParagraph}
               disabled={!isCurrentCompleted}
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
             >
               下一段 →
             </button>

@@ -8,6 +8,7 @@ export interface Book {
   grade?: string;
   subject?: string;
   lesson_number?: number;
+  chapter?: string;
   author?: string;
   completed?: boolean;
   average_score?: number;

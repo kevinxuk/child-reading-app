@@ -8,7 +8,17 @@ const creditsFile = path.join(dataDir, 'credits.json');
 interface CreditsData {
   user_id: string;
   points: number;
+  level: string;
   history: { reason: string; amount: number; created_at: string }[];
+}
+
+// 积分等级映射
+function getLevel(points: number): string {
+  if (points >= 5000) return '阅读大师';
+  if (points >= 1000) return '阅读专家';
+  if (points >= 200) return '阅读达人';
+  if (points >= 50) return '阅读爱好者';
+  return '新手';
 }
 
 function ensureDataDir() {
@@ -20,17 +30,24 @@ function ensureDataDir() {
 function getCredits(): CreditsData {
   ensureDataDir();
   if (!fs.existsSync(creditsFile)) {
-    return { user_id: 'test-user', points: 0, history: [] };
+    return { user_id: 'test-user', points: 0, level: '新手', history: [] };
   }
   try {
-    return JSON.parse(fs.readFileSync(creditsFile, 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(creditsFile, 'utf-8'));
+    // 确保 level 字段存在
+    if (!data.level) {
+      data.level = getLevel(data.points);
+    }
+    return data;
   } catch {
-    return { user_id: 'test-user', points: 0, history: [] };
+    return { user_id: 'test-user', points: 0, level: '新手', history: [] };
   }
 }
 
 function saveCredits(data: CreditsData) {
   ensureDataDir();
+  // 自动更新等级
+  data.level = getLevel(data.points);
   fs.writeFileSync(creditsFile, JSON.stringify(data, null, 2), 'utf-8');
 }
 

@@ -1,0 +1,1239 @@
+▲ Next.js 16.2.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://198.18.0.1:3000
+- Environments: .env.local
+✓ Ready in 790ms
+
+ GET / 200 in 387ms (next.js: 184ms, application-code: 202ms)
+ GET / 200 in 34ms (next.js: 5ms, application-code: 30ms)
+ GET /api/books 200 in 71ms (next.js: 52ms, application-code: 19ms)
+ GET /api/scores 200 in 129ms (next.js: 111ms, application-code: 18ms)
+ GET /api/credits 200 in 168ms (next.js: 162ms, application-code: 6ms)
+ GET /api/credits 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ GET /books 200 in 40ms (next.js: 23ms, application-code: 17ms)
+ GET /api/credits 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /api/books 200 in 18ms (next.js: 12ms, application-code: 6ms)
+ GET /api/books 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ GET /books/1775914703659/edit 200 in 986ms (next.js: 969ms, application-code: 17ms)
+ GET /api/books?id=1775914703659 200 in 5ms (next.js: 1848µs, application-code: 4ms)
+ GET /api/credits 200 in 13ms (next.js: 7ms, application-code: 6ms)
+ GET /api/books?id=1775914703659 200 in 7ms (next.js: 1997µs, application-code: 5ms)
+ GET /books 200 in 12ms (next.js: 2ms, application-code: 10ms)
+ GET /api/books 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ GET /api/credits 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ GET /api/books 200 in 9ms (next.js: 2ms, application-code: 7ms)
+ DELETE /api/books?id=1775914703659 200 in 22ms (next.js: 16ms, application-code: 7ms)
+ DELETE /api/books?id=1775914703679 200 in 6ms (next.js: 1447µs, application-code: 4ms)
+ DELETE /api/books?id=1775914703689 200 in 7ms (next.js: 1424µs, application-code: 5ms)
+ DELETE /api/books?id=1775914703698 200 in 7ms (next.js: 1457µs, application-code: 6ms)
+ DELETE /api/books?id=1775914703712 200 in 6ms (next.js: 1455µs, application-code: 4ms)
+ DELETE /api/books?id=1778849392372 200 in 8ms (next.js: 1476µs, application-code: 6ms)
+✓ Compiled in 429ms
+ GET /api/books 200 in 36ms (next.js: 28ms, application-code: 8ms)
+ GET /books 200 in 183ms (next.js: 96ms, application-code: 87ms)
+✓ Compiled in 68ms
+⨯ ./src/app/books/page.tsx:391:10
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  [90m389 |[0m             })}
+  [90m390 |[0m           </div>
+[31m[1m>[0m [90m391 |[0m         )}
+  [90m    |[0m          [31m[1m^[0m
+  [90m392 |[0m       </div>
+  [90m393 |[0m
+  [90m394 |[0m       {[90m/* Exchange Modal */[0m}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+ GET /books 500 in 1143ms (next.js: 995ms, application-code: 148ms)
+⨯ ./src/app/books/page.tsx:391:10
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  [90m389 |[0m             })}
+  [90m390 |[0m           </div>
+[31m[1m>[0m [90m391 |[0m         )}
+  [90m    |[0m          [31m[1m^[0m
+  [90m392 |[0m       </div>
+  [90m393 |[0m
+  [90m394 |[0m       {[90m/* Exchange Modal */[0m}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+ GET /books 500 in 25ms (next.js: 9ms, application-code: 16ms)
+⨯ ./src/app/books/page.tsx:391:10
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  [90m389 |[0m             })}
+  [90m390 |[0m           </div>
+[31m[1m>[0m [90m391 |[0m         )}
+  [90m    |[0m          [31m[1m^[0m
+  [90m392 |[0m       </div>
+  [90m393 |[0m
+  [90m394 |[0m       {[90m/* Exchange Modal */[0m}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+ GET /books 500 in 15ms (next.js: 7ms, application-code: 9ms)
+[browser] Uncaught Error: ./src/app/books/page.tsx:391:10
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  389 |             })}
+  390 |           </div>
+> 391 |         )}
+      |          ^
+  392 |       </div>
+  393 |
+  394 |       {/* Exchange Modal */}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./src/app/books/page.tsx:391:10)
+    at <unknown> (Error: (./src/app/books/page.tsx:391:10)
+⨯ ./src/app/books/page.tsx:401:13
+Expression expected
+  [90m399 |[0m               );
+  [90m400 |[0m             })}
+[31m[1m>[0m [90m401 |[0m           </>
+  [90m    |[0m             [31m[1m^[0m
+  [90m402 |[0m         )}
+  [90m403 |[0m       </div>
+  [90m404 |[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+⨯ ./src/app/books/page.tsx:401:13
+Expression expected
+  [90m399 |[0m               );
+  [90m400 |[0m             })}
+[31m[1m>[0m [90m401 |[0m           </>
+  [90m    |[0m             [31m[1m^[0m
+  [90m402 |[0m         )}
+  [90m403 |[0m       </div>
+  [90m404 |[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+ GET /books 500 in 28ms (next.js: 19ms, application-code: 9ms)
+[browser] Uncaught Error: ./src/app/books/page.tsx:401:13
+Expression expected
+  399 |               );
+  400 |             })}
+> 401 |           </>
+      |             ^
+  402 |         )}
+  403 |       </div>
+  404 |
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/app/books/page.tsx [Client Component Browser]
+    ./src/app/books/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/books/page.tsx [Client Component SSR]
+    ./src/app/books/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./src/app/books/page.tsx:401:13)
+    at <unknown> (Error: (./src/app/books/page.tsx:401:13)
+✓ Compiled in 68ms
+ GET /books 200 in 224ms (next.js: 98ms, application-code: 126ms)
+ GET /books 200 in 48ms (next.js: 3ms, application-code: 45ms)
+ GET /api/credits 200 in 44ms (next.js: 35ms, application-code: 9ms)
+ GET /api/books 200 in 82ms (next.js: 74ms, application-code: 8ms)
+ GET / 200 in 32ms (next.js: 9ms, application-code: 23ms)
+ GET /books 200 in 27ms (next.js: 5ms, application-code: 22ms)
+ GET /api/credits 200 in 5ms (next.js: 2ms, application-code: 3ms)
+ GET /api/books 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ DELETE /api/books?id=1775914703705,1775914703719,1775914703725,1775914703733,1775914703739,1775914703746,1775914703752,1775914703757,1775914703764,1775914703770,1775914703776,1775914703782,1775962708851,1775962708858,1775962708864,1775962708871,1775962708877,1775962708883,1775962708887,1775962708893,1775962708898,1775962708903,1775962708913,1775962708924,1775962708935,1775962708943,1775962708951,1775962708963,1778849391364,1778849391376,1778849391386,1778849391395,1778849391404,1778849391414,1778849391425,1778849391437,1778849391449,1778849391462,1778849391472,1778849391484,1778849391495,1778849391507,1778849391518,1778849391533,1778849391549,1778849391560,1778849391573,1778849391584,1778849391599,1778849391611,1778849391622,1778849391632,1778849391643,1778849391656,1778849391666,1778849391678,1778849391690,1778849391701,1778849391712,1778849391725,1778849391735,1778849391747,1778849391757,1778849391769,1778849391784,1778849391797,1778849391808,1778849391820,1778849391832,1778849391845,1778849391856,1778849391868,1778849391880,1778849391892,1778849391904,1778849391916,1778849391927,1778849391938,1778849391952,1778849391964,1778849391976,1778849391991,1778849392004,1778849392017,1778849392033,1778849392045,1778849392059,1778849392071,1778849392082,1778849392095,1778849392108,1778849392122,1778849392134,1778849392146,1778849392157,1778849392168,1778849392180,1778849392192,1778849392202,1778849392214,1778849392225,1778849392238,1778849392251,1778849392266,1778849392280,1778849392296,1778849392310,1778849392323,1778849392334,1778849392347,1778849392360,1778849392386,1778849392399 200 in 9ms (next.js: 1436µs, application-code: 8ms)
+ GET /import 200 in 35ms (next.js: 21ms, application-code: 14ms)
+ GET /api/credits 200 in 9ms (next.js: 3ms, application-code: 6ms)
+[browser] Encountered two children with the same key, `gzb-1-1-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-007`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-008`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-009`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-010`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-007`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-008`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-009`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-010`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+书籍保存成功: 1778853760785 第1课 村居 - [清代] 高鼎
+ POST /api/books 200 in 7ms (next.js: 1480µs, application-code: 6ms)
+书籍保存成功: 1778853760794 第2课 咏柳 - [唐代] 贺知章
+ POST /api/books 200 in 5ms (next.js: 1308µs, application-code: 3ms)
+书籍保存成功: 1778853760802 第3课 找春天
+ POST /api/books 200 in 5ms (next.js: 1438µs, application-code: 4ms)
+书籍保存成功: 1778853760813 第3课 开满鲜花的小路
+ POST /api/books 200 in 5ms (next.js: 1238µs, application-code: 4ms)
+书籍保存成功: 1778853760821 第4课 邓小平爷爷植树
+ POST /api/books 200 in 5ms (next.js: 1298µs, application-code: 3ms)
+书籍保存成功: 1778853760832 第7课 千人糕
+ POST /api/books 200 in 8ms (next.js: 1963µs, application-code: 6ms)
+书籍保存成功: 1778853760849 第5课 雷锋叔叔，你在哪里
+ POST /api/books 200 in 9ms (next.js: 2ms, application-code: 6ms)
+书籍保存成功: 1778853760862 第7课 一匹出色的马
+ POST /api/books 200 in 8ms (next.js: 2ms, application-code: 6ms)
+书籍保存成功: 1778853760880 第8课 彩色的梦
+ POST /api/books 200 in 8ms (next.js: 1827µs, application-code: 6ms)
+书籍保存成功: 1778853760891 第9课 枫树上的喜鹊
+ POST /api/books 200 in 7ms (next.js: 1281µs, application-code: 5ms)
+书籍保存成功: 1778853760902 第10课 沙滩上的童话
+ POST /api/books 200 in 8ms (next.js: 1932µs, application-code: 6ms)
+书籍保存成功: 1778853760914 第12课 亡羊补牢
+ POST /api/books 200 in 8ms (next.js: 3ms, application-code: 6ms)
+书籍保存成功: 1778853760926 第12课 揠苗助长
+ POST /api/books 200 in 9ms (next.js: 1755µs, application-code: 7ms)
+书籍保存成功: 1778853760938 第13课 画杨桃
+ POST /api/books 200 in 9ms (next.js: 1851µs, application-code: 7ms)
+书籍保存成功: 1778853760948 第14课 小马过河
+ POST /api/books 200 in 5ms (next.js: 1697µs, application-code: 3ms)
+书籍保存成功: 1778853760957 第15课 晓出净慈寺送林子方 - [宋代] 杨万里
+ POST /api/books 200 in 5ms (next.js: 1295µs, application-code: 4ms)
+书籍保存成功: 1778853760965 第16课 绝句 - [唐代] 杜甫
+ POST /api/books 200 in 5ms (next.js: 1197µs, application-code: 4ms)
+书籍保存成功: 1778853760976 第17课 雷雨
+ POST /api/books 200 in 9ms (next.js: 2ms, application-code: 7ms)
+书籍保存成功: 1778853760987 第18课 要是你在野外迷了路
+ POST /api/books 200 in 5ms (next.js: 1779µs, application-code: 4ms)
+书籍保存成功: 1778853760995 第19课 太空生活趣事多
+ POST /api/books 200 in 5ms (next.js: 1309µs, application-code: 3ms)
+书籍保存成功: 1778853761003 第19课 大象的耳朵
+ POST /api/books 200 in 7ms (next.js: 1230µs, application-code: 6ms)
+书籍保存成功: 1778853761013 第20课 蜘蛛开店
+ POST /api/books 200 in 5ms (next.js: 1273µs, application-code: 4ms)
+书籍保存成功: 1778853761022 第21课 青蛙卖泥塘
+ POST /api/books 200 in 5ms (next.js: 1386µs, application-code: 4ms)
+书籍保存成功: 1778853761039 第22课 小毛虫
+ POST /api/books 200 in 15ms (next.js: 7ms, application-code: 7ms)
+书籍保存成功: 1778853761049 第23课 祖先的摇篮
+ POST /api/books 200 in 7ms (next.js: 1365µs, application-code: 5ms)
+书籍保存成功: 1778853761058 第24课 羿射九日
+ POST /api/books 200 in 5ms (next.js: 1273µs, application-code: 4ms)
+书籍保存成功: 1778853761069 第25课 黄帝的传说
+ POST /api/books 200 in 7ms (next.js: 1246µs, application-code: 6ms)
+ GET /books 200 in 22ms (next.js: 1836µs, application-code: 20ms)
+ GET /api/credits 200 in 6ms (next.js: 1978µs, application-code: 4ms)
+ GET /api/books 200 in 6ms (next.js: 1956µs, application-code: 4ms)
+ GET /api/books 200 in 6ms (next.js: 1868µs, application-code: 5ms)
+ GET /read/1778853760785 200 in 555ms (next.js: 539ms, application-code: 16ms)
+ GET /api/credits 200 in 6ms (next.js: 3ms, application-code: 3ms)
+ GET /api/books?id=1778853760785 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ GET /api/books?id=1778853760785 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ GET /books 200 in 12ms (next.js: 1895µs, application-code: 10ms)
+ GET /api/credits 200 in 5ms (next.js: 1826µs, application-code: 3ms)
+ GET /api/books 200 in 4ms (next.js: 1696µs, application-code: 3ms)
+ GET /api/books 200 in 4ms (next.js: 1214µs, application-code: 3ms)
+ GET /api/rewards 200 in 26ms (next.js: 23ms, application-code: 3ms)
+✓ Compiled in 30ms
+ GET /books 200 in 99ms (next.js: 64ms, application-code: 36ms)
+✓ Compiled in 26ms
+ GET /books 200 in 100ms (next.js: 62ms, application-code: 38ms)
+✓ Compiled in 46ms
+✓ Compiled in 36ms
+ GET /books 200 in 131ms (next.js: 95ms, application-code: 36ms)
+✓ Compiled in 103ms
+ GET /books 200 in 232ms (next.js: 130ms, application-code: 102ms)
+ GET /api/credits 200 in 70ms (next.js: 63ms, application-code: 7ms)
+ GET /books 200 in 421ms (next.js: 96ms, application-code: 325ms)
+ GET /books 200 in 73ms (next.js: 8ms, application-code: 65ms)
+ GET /books 200 in 72ms (next.js: 28ms, application-code: 45ms)
+ GET /books 200 in 72ms (next.js: 48ms, application-code: 24ms)
+ GET /books 200 in 185ms (next.js: 72ms, application-code: 113ms)
+ GET /books 200 in 187ms (next.js: 8ms, application-code: 180ms)
+ GET /api/credits 200 in 4ms (next.js: 1543µs, application-code: 3ms)
+ GET /api/books 200 in 26ms (next.js: 20ms, application-code: 6ms)
+✓ Compiled in 32ms
+ GET /books 200 in 132ms (next.js: 94ms, application-code: 38ms)
+✓ Compiled in 48ms
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 53ms (next.js: 38ms, application-code: 14ms)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 15ms (next.js: 6ms, application-code: 9ms)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 17ms (next.js: 7ms, application-code: 10ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:154:5)
+    at <unknown> (Error: (./src/components/Navbar.tsx:154:5)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 44ms (next.js: 33ms, application-code: 11ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:154:5)
+    at <unknown> (Error: (./src/components/Navbar.tsx:154:5)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 45ms (next.js: 37ms, application-code: 9ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:154:5)
+    at <unknown> (Error: (./src/components/Navbar.tsx:154:5)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 44ms (next.js: 34ms, application-code: 10ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:154:5)
+    at <unknown> (Error: (./src/components/Navbar.tsx:154:5)
+⨯ ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  [90m152 |[0m     </nav>
+  [90m153 |[0m
+[31m[1m>[0m [90m154 |[0m     {[90m/* Settings Modal */[0m}
+  [90m    |[0m     [31m[1m^[0m
+  [90m155 |[0m     {settingsOpen && (
+  [90m156 |[0m       <[33mSettingsModal[0m isOpen={settingsOpen} onClose={() => setSettingsOpen([36mfalse[0m)} />
+  [90m157 |[0m     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 51ms (next.js: 40ms, application-code: 11ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:154:5)
+    at <unknown> (Error: (./src/components/Navbar.tsx:154:5)
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+✓ Compiled in 37ms
+⨯ ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  [90m158 |[0m     )}
+  [90m159 |[0m   );
+[31m[1m>[0m [90m160 |[0m }
+  [90m    |[0m [31m[1m^[0m
+  [90m161 |[0m
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+⨯ ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  [90m158 |[0m     )}
+  [90m159 |[0m   );
+[31m[1m>[0m [90m160 |[0m }
+  [90m    |[0m [31m[1m^[0m
+  [90m161 |[0m
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+ GET /books 500 in 29ms (next.js: 18ms, application-code: 10ms)
+[browser] Uncaught Error: ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  158 |     )}
+  159 |   );
+> 160 | }
+      | ^
+  161 |
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx
+
+
+    at <unknown> (Error: ./src/components/Navbar.tsx:160:1)
+    at <unknown> (Error: (./src/components/Navbar.tsx:160:1)
+✓ Compiled in 88ms
+ GET /books 200 in 223ms (next.js: 94ms, application-code: 129ms)
+ GET /api/books 200 in 25ms (next.js: 20ms, application-code: 5ms)
+ GET /api/credits 200 in 53ms (next.js: 47ms, application-code: 6ms)
+ GET / 200 in 204ms (next.js: 64ms, application-code: 141ms)
+ GET /books 200 in 21ms (next.js: 1862µs, application-code: 19ms)
+ GET /api/credits 200 in 5ms (next.js: 1639µs, application-code: 3ms)
+ GET /api/books 200 in 9ms (next.js: 6ms, application-code: 3ms)
+ GET /books 200 in 138ms (next.js: 3ms, application-code: 135ms)
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:154:5
+Expected ',', got '{'
+  152 |     </nav>
+  153 |
+> 154 |     {/* Settings Modal */}
+      |     ^
+  155 |     {settingsOpen && (
+  156 |       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+  157 |     )}
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  158 |     )}
+  159 |   );
+> 160 | }
+      | ^
+  161 |
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  158 |     )}
+  159 |   );
+> 160 | }
+      | ^
+  161 |
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+[browser] ./src/components/Navbar.tsx:160:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  158 |     )}
+  159 |   );
+> 160 | }
+      | ^
+  161 |
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/Navbar.tsx
+    ./src/app/layout.tsx 
+ GET /books 200 in 190ms (next.js: 3ms, application-code: 187ms)
+ GET /books 200 in 172ms (next.js: 5ms, application-code: 166ms)
+ GET /books 200 in 172ms (next.js: 32ms, application-code: 140ms)
+ GET /books 200 in 172ms (next.js: 56ms, application-code: 116ms)
+ GET /api/credits 200 in 16ms (next.js: 8ms, application-code: 8ms)
+ GET /books 200 in 112ms (next.js: 6ms, application-code: 106ms)
+ GET /books 200 in 84ms (next.js: 4ms, application-code: 80ms)
+ GET /api/credits 200 in 5ms (next.js: 2ms, application-code: 3ms)
+ GET /api/books 200 in 9ms (next.js: 6ms, application-code: 3ms)
+ GET /books 200 in 23ms (next.js: 2ms, application-code: 21ms)
+ GET /api/credits 200 in 9ms (next.js: 1917µs, application-code: 7ms)
+ GET /api/books 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ GET /import 200 in 94ms (next.js: 61ms, application-code: 33ms)
+[browser] Encountered two children with the same key, `gzb-1-1-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-007`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-008`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-009`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-010`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+ GET /api/credits 200 in 8ms (next.js: 2ms, application-code: 6ms)
+ GET / 200 in 11ms (next.js: 1836µs, application-code: 9ms)
+ GET /api/credits 200 in 5ms (next.js: 2ms, application-code: 3ms)
+ GET /api/books 200 in 9ms (next.js: 6ms, application-code: 3ms)
+ GET /api/scores 200 in 40ms (next.js: 35ms, application-code: 5ms)
+ GET /api/credits 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ GET /api/books 200 in 13ms (next.js: 8ms, application-code: 5ms)
+ GET /api/scores 200 in 19ms (next.js: 15ms, application-code: 4ms)
+ GET /api/credits 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ GET /books 200 in 15ms (next.js: 2ms, application-code: 12ms)
+ GET /api/credits 200 in 6ms (next.js: 3ms, application-code: 3ms)
+ GET /api/books 200 in 5ms (next.js: 1471µs, application-code: 4ms)
+ GET /api/books 200 in 7ms (next.js: 1902µs, application-code: 5ms)
+ GET /books 200 in 21ms (next.js: 1827µs, application-code: 20ms)
+ GET /stats 200 in 33ms (next.js: 22ms, application-code: 11ms)
+ GET /api/credits 200 in 8ms (next.js: 4ms, application-code: 4ms)
+ GET /api/books 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ GET /api/scores 200 in 21ms (next.js: 17ms, application-code: 4ms)
+ GET /api/credits 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ GET /api/books 200 in 16ms (next.js: 9ms, application-code: 7ms)
+ GET /api/scores 200 in 26ms (next.js: 18ms, application-code: 8ms)
+ GET /api/credits 200 in 6ms (next.js: 1858µs, application-code: 4ms)
+ GET /stats 200 in 12ms (next.js: 1784µs, application-code: 10ms)
+ GET /stats 200 in 13ms (next.js: 1682µs, application-code: 12ms)
+ GET /stats 200 in 11ms (next.js: 1975µs, application-code: 9ms)
+ GET /stats 200 in 10ms (next.js: 1816µs, application-code: 8ms)
+ GET / 200 in 12ms (next.js: 1825µs, application-code: 11ms)
+ GET /api/credits 200 in 5ms (next.js: 1936µs, application-code: 3ms)
+ GET /api/books 200 in 5ms (next.js: 2ms, application-code: 3ms)
+ GET /api/scores 200 in 8ms (next.js: 5ms, application-code: 3ms)
+ GET /api/credits 200 in 4ms (next.js: 1657µs, application-code: 2ms)
+ GET /api/books 200 in 4ms (next.js: 1598µs, application-code: 3ms)
+ GET /api/scores 200 in 8ms (next.js: 5ms, application-code: 3ms)
+ GET /api/credits 200 in 5ms (next.js: 1279µs, application-code: 3ms)
+ GET /books 200 in 11ms (next.js: 1762µs, application-code: 9ms)
+ GET /api/credits 200 in 10ms (next.js: 1992µs, application-code: 8ms)
+ GET /api/books 200 in 4ms (next.js: 1400µs, application-code: 3ms)
+ GET /api/books 200 in 4ms (next.js: 1513µs, application-code: 3ms)
+ GET /import 200 in 12ms (next.js: 1913µs, application-code: 10ms)
+[browser] Encountered two children with the same key, `gzb-1-1-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-007`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-008`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-009`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-1-010`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-001`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-002`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-003`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-004`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-005`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+[browser] Encountered two children with the same key, `gzb-1-2-006`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+ GET /api/credits 200 in 4ms (next.js: 1448µs, application-code: 2ms)
+ GET /books 200 in 19ms (next.js: 1835µs, application-code: 18ms)
+ GET / 200 in 12ms (next.js: 2ms, application-code: 10ms)
+ GET /api/credits 200 in 4ms (next.js: 1841µs, application-code: 2ms)
+ GET /api/books 200 in 4ms (next.js: 1935µs, application-code: 2ms)
+ GET /api/scores 200 in 8ms (next.js: 5ms, application-code: 3ms)
+ GET /api/credits 200 in 7ms (next.js: 5ms, application-code: 3ms)
+ GET /api/books 200 in 4ms (next.js: 1531µs, application-code: 3ms)
+ GET /api/scores 200 in 8ms (next.js: 5ms, application-code: 3ms)
+ GET /api/credits 200 in 12ms (next.js: 9ms, application-code: 3ms)
+ GET /stats 200 in 11ms (next.js: 2ms, application-code: 9ms)
+ GET /api/credits 200 in 5ms (next.js: 1907µs, application-code: 3ms)
+ GET /api/books 200 in 4ms (next.js: 1440µs, application-code: 2ms)
+ GET /api/scores 200 in 7ms (next.js: 4ms, application-code: 3ms)
+ GET /api/credits 200 in 4ms (next.js: 1620µs, application-code: 2ms)
+ GET /api/books 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ GET /api/scores 200 in 14ms (next.js: 9ms, application-code: 5ms)
+ GET /api/credits 200 in 7ms (next.js: 1992µs, application-code: 5ms)
+ GET / 200 in 10ms (next.js: 1810µs, application-code: 9ms)
+ GET /api/credits 200 in 4ms (next.js: 1886µs, application-code: 2ms)
+ GET /api/books 200 in 4ms (next.js: 1408µs, application-code: 3ms)
+ GET /api/scores 200 in 8ms (next.js: 5ms, application-code: 3ms)
+ GET /api/credits 200 in 8ms (next.js: 5ms, application-code: 2ms)
+ GET /api/books 200 in 5ms (next.js: 1387µs, application-code: 3ms)
+ GET /api/scores 200 in 12ms (next.js: 8ms, application-code: 4ms)
+ GET /api/credits 200 in 12ms (next.js: 9ms, application-code: 4ms)
+[?25h

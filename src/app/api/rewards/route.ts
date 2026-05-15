@@ -45,6 +45,46 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    const { action, rewardId } = body;
+
+    // 兑换奖励
+    if (action === 'redeem') {
+      if (!rewardId) {
+        return NextResponse.json({ success: false, error: '奖励 ID 不能为空' }, { status: 400 });
+      }
+
+      const rewards = getRewards();
+      const reward = rewards.find(r => r.id === rewardId);
+      if (!reward) {
+        return NextResponse.json({ success: false, error: '奖励不存在' }, { status: 404 });
+      }
+
+      // 检查积分
+      const creditsPath = path.join(dataDir, 'credits.json');
+      let creditsData: { user_id: string; points: number; history: { reason: string; amount: number; created_at: string }[] };
+      try {
+        creditsData = JSON.parse(fs.readFileSync(creditsPath, 'utf-8'));
+      } catch {
+        creditsData = { user_id: 'test-user', points: 0, history: [] };
+      }
+
+      if (creditsData.points < reward.cost) {
+        return NextResponse.json({ success: false, error: '积分不足' }, { status: 400 });
+      }
+
+      // 扣减积分
+      creditsData.points -= reward.cost;
+      creditsData.history.push({
+        reason: `兑换「${reward.name}」`,
+        amount: -reward.cost,
+        created_at: new Date().toISOString(),
+      });
+      fs.writeFileSync(creditsPath, JSON.stringify(creditsData, null, 2), 'utf-8');
+
+      return NextResponse.json({ success: true, data: { reward, remainingPoints: creditsData.points } });
+    }
+
+    // 新增奖励
     const { name, icon, cost, description } = body;
 
     if (!name || !cost) {

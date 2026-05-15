@@ -27,6 +27,7 @@ interface AppState {
   isPlaying: boolean;
   recognizedText: string;
   ttsConfig: TTSConfig;
+  selectedGrade: string; // 'all' | '1' | '2' | '3' | '4' | '5' | '6'
   
   setBooks: (books: Book[]) => void;
   addBook: (book: Book) => void;
@@ -39,6 +40,7 @@ interface AppState {
   setIsPlaying: (isPlaying: boolean) => void;
   setRecognizedText: (text: string) => void;
   setTTSConfig: (config: Partial<TTSConfig>) => void;
+  setSelectedGrade: (grade: string) => void;
 }
 
 const defaultTTSConfig: TTSConfig = {
@@ -68,6 +70,7 @@ export const useStore = create<AppState>()(
       isPlaying: false,
       recognizedText: '',
       ttsConfig: defaultTTSConfig,
+      selectedGrade: 'all',
       
       setBooks: (books) => set({ books }),
       addBook: (book) => set((state) => ({ books: [...state.books, book] })),
@@ -86,10 +89,11 @@ export const useStore = create<AppState>()(
       setTTSConfig: (config) => set((state) => ({ 
         ttsConfig: { ...state.ttsConfig, ...config } 
       })),
+      setSelectedGrade: (grade) => set({ selectedGrade: grade }),
     }),
     {
       name: 'child-reading-storage',
-      partialize: (state) => ({ ttsConfig: state.ttsConfig }),
+      partialize: (state) => ({ ttsConfig: state.ttsConfig, selectedGrade: state.selectedGrade }),
     }
   )
 );

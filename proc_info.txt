@@ -1,0 +1,1 @@
+Get-Process -Id 8264 | ForEach-Object { .Id.ToString() + ' ' + .ProcessName }

@@ -9,11 +9,18 @@ export default function NewBookPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [language, setLanguage] = useState<'zh-CN' | 'en-US' | 'mixed'>('zh-CN');
+  const [grade, setGrade] = useState('');
+  const [subject, setSubject] = useState('');
+  const [chapter, setChapter] = useState('');
+  const [lessonNumber, setLessonNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [ocrProgress, setOcrProgress] = useState(0);
   const [uploadProgress, setUploadProgress] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
+
+  const grades = ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级'];
+  const subjects = ['语文', '英语'];
 
   const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -85,7 +92,15 @@ export default function NewBookPage() {
       const response = await fetch('/api/books', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, content, language }),
+        body: JSON.stringify({
+          title: title.trim(),
+          content: content.trim(),
+          language,
+          grade: grade || undefined,
+          subject: subject || undefined,
+          lesson_number: lessonNumber ? parseInt(lessonNumber) : undefined,
+          chapter: chapter || undefined,
+        }),
       });
 
       const result = await response.json();
@@ -100,23 +115,77 @@ export default function NewBookPage() {
       console.error('Save Error:', error);
       alert('保存失败，请重试');
     }
-  }, [title, content, language, router]);
+  }, [title, content, language, grade, subject, chapter, lessonNumber, router]);
 
   return (
-    <div className="min-h-screen p-8 bg-gray-50">
+    <div className="min-h-screen p-4 sm:p-8 bg-gray-50">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">添加新书籍</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-8">添加新书籍</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium mb-2">书籍标题</label>
+            <label className="block text-sm font-medium mb-2">书籍标题 *</label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
               placeholder="输入书籍标题"
+              required
             />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">年级</label>
+              <select
+                value={grade}
+                onChange={(e) => setGrade(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">未选择</option>
+                {grades.map(g => (
+                  <option key={g} value={g}>{g}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">学科</label>
+              <select
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">未选择</option>
+                {subjects.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">章节</label>
+              <input
+                type="text"
+                value={chapter}
+                onChange={(e) => setChapter(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="如：课文1、UNIT 1"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">课时</label>
+              <input
+                type="number"
+                value={lessonNumber}
+                onChange={(e) => setLessonNumber(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="如：1、2、3"
+                min="1"
+              />
+            </div>
           </div>
 
           <div>
@@ -200,16 +269,17 @@ export default function NewBookPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">书籍内容</label>
+            <label className="block text-sm font-medium mb-2">书籍内容 *</label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 min-h-[200px]"
               placeholder="输入或粘贴书籍内容，也可通过上方按钮上传文件或图片"
+              required
             />
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             <button
               type="submit"
               className="flex-1 px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50"
