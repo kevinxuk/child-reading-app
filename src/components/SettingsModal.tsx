@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useStore } from '@/store/useStore';
-import { LANGUAGE_MAP } from '@/lib/tts';
+import { LANGUAGE_MAP, getVoices } from '@/lib/tts';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -58,11 +58,25 @@ const GRADE_OPTIONS = [
   { value: '6', label: '六年级', icon: '🌻' },
 ];
 
-type Tab = 'grade' | 'tts';
+type Tab = 'grade' | 'tts' | 'data';
 
 export default function SettingsModal({ isOpen, onClose, bookLanguage }: SettingsModalProps) {
-  const { ttsConfig, setTTSConfig, selectedGrade, setSelectedGrade } = useStore();
+  const { ttsConfig, setTTSConfig, browserTTS, setBrowserTTS, selectedGrade, setSelectedGrade } = useStore();
   const [activeTab, setActiveTab] = useState<Tab>('grade');
+
+  // 浏览器 TTS 语音列表
+  const [browserVoices, setBrowserVoices] = useState<SpeechSynthesisVoice[]>([]);
+
+  // 加载语音列表
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      const voices = window.speechSynthesis.getVoices();
+      setBrowserVoices(voices);
+      window.speechSynthesis.addEventListener('voiceschanged', () => {
+        setBrowserVoices(window.speechSynthesis.getVoices());
+      });
+    }
+  }, [isOpen]);
 
   // TTS state
   const resolvedLanguage = bookLanguage ? (LANGUAGE_MAP[bookLanguage]?.ttsLanguage ?? 'Chinese') : ttsConfig.language;
@@ -84,6 +98,59 @@ export default function SettingsModal({ isOpen, onClose, bookLanguage }: Setting
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [testing, setTesting] = useState(false);
   const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);
+
+  // 数据清理状态
+  const [clearing, setClearing] = useState(false);
+  const [clearResult, setClearResult] = useState<{ success: boolean; message: string } | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  // 清理统计信息
+  const handleClearStats = async () => {
+    setClearing(true);
+    setClearResult(null);
+    try {
+      const res = await fetch('/api/clear-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'stats' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setClearResult({ success: true, message: '✅ 统计信息已全部清理' });
+      } else {
+        setClearResult({ success: false, message: '❌ 清理失败: ' + (data.error || '未知错误') });
+      }
+    } catch (error) {
+      setClearResult({ success: false, message: '❌ 清理失败: ' + String(error) });
+    } finally {
+      setClearing(false);
+      setShowConfirm(false);
+    }
+  };
+
+  // 清理所有数据
+  const handleClearAll = async () => {
+    setClearing(true);
+    setClearResult(null);
+    try {
+      const res = await fetch('/api/clear-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'all' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setClearResult({ success: true, message: '✅ 所有数据已清理（教材数据保留）' });
+      } else {
+        setClearResult({ success: false, message: '❌ 清理失败: ' + (data.error || '未知错误') });
+      }
+    } catch (error) {
+      setClearResult({ success: false, message: '❌ 清理失败: ' + String(error) });
+    } finally {
+      setClearing(false);
+      setShowConfirm(false);
+    }
+  };
 
   useEffect(() => {
     if (bookLanguage) {
@@ -193,6 +260,14 @@ export default function SettingsModal({ isOpen, onClose, bookLanguage }: Setting
             }`}
           >
             🔊 TTS 语音
+          </button>
+          <button
+            onClick={() => setActiveTab('data')}
+            className={`flex-1 py-2 text-sm font-medium rounded-md transition ${
+              activeTab === 'data' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            🗑️ 数据管理
           </button>
         </div>
 
@@ -385,6 +460,127 @@ export default function SettingsModal({ isOpen, onClose, bookLanguage }: Setting
                   </div>
                 )}
               </>
+            )}
+
+            {/* 浏览器 TTS 设置 — 当未启用大模型 TTS 时生效 */}
+            <div className="border-t pt-4 mt-4">
+              <h3 className="font-bold text-base mb-3">🔊 浏览器 TTS 设置</h3>
+              <p className="text-xs text-gray-400 mb-3">
+                当未启用大模型 TTS 时，将使用浏览器内置的语音引擎朗读
+              </p>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-xs text-gray-500 mb-1 block">语音</label>
+                  <select
+                    value={browserTTS.voice}
+                    onChange={(e) => setBrowserTTS({ voice: e.target.value })}
+                    className="w-full p-2 border rounded-lg text-sm"
+                  >
+                    {browserVoices.length === 0 && <option value="">无可用语音</option>}
+                    {browserVoices.map((v) => (
+                      <option key={v.name} value={v.name}>
+                        {v.name} ({v.lang})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs text-gray-500 mb-1 block">
+                    语速: {browserTTS.rate.toFixed(1)}x
+                  </label>
+                  <input
+                    type="range" min="0.3" max="2.0" step="0.1"
+                    value={browserTTS.rate}
+                    onChange={(e) => setBrowserTTS({ rate: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between text-xs text-gray-400">
+                    <span>慢 0.3</span>
+                    <span>正常 1.0</span>
+                    <span>快 2.0</span>
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-gray-500 mb-1 block">
+                    音调: {browserTTS.pitch === 1.0 ? '标准' : browserTTS.pitch > 1.0 ? `+${((browserTTS.pitch - 1.0) * 100).toFixed(0)}%` : `-${((1.0 - browserTTS.pitch) * 100).toFixed(0)}%`}
+                  </label>
+                  <input
+                    type="range" min="0.5" max="2.0" step="0.1"
+                    value={browserTTS.pitch}
+                    onChange={(e) => setBrowserTTS({ pitch: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between text-xs text-gray-400">
+                    <span>低沉 0.5</span>
+                    <span>标准 1.0</span>
+                    <span>高亢 2.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Data Management Tab */}
+        {activeTab === 'data' && (
+          <div className="space-y-4">
+            <p className="text-sm text-gray-500 mb-2">管理应用数据，清理后将无法恢复，请谨慎操作</p>
+
+            {/* 清理统计信息 */}
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <h3 className="font-semibold text-orange-800 mb-2">🧹 清理统计信息</h3>
+              <p className="text-sm text-orange-700 mb-3">
+                清理阅读记录、积分、等级和音频缓存。保留年级设置和教材数据。
+              </p>
+              {!showConfirm ? (
+                <button
+                  onClick={() => { setShowConfirm(true); setClearResult(null); }}
+                  className="w-full p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+                >
+                  清理统计信息
+                </button>
+              ) : (
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-red-600">⚠️ 确认要清理所有统计信息吗？此操作不可撤销！</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleClearStats}
+                      disabled={clearing}
+                      className="flex-1 p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition disabled:opacity-50"
+                    >
+                      {clearing ? '清理中...' : '确认清理'}
+                    </button>
+                    <button
+                      onClick={() => setShowConfirm(false)}
+                      className="flex-1 p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
+                    >
+                      取消
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 清理所有数据 */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <h3 className="font-semibold text-red-800 mb-2">⚠️ 清理所有数据</h3>
+              <p className="text-sm text-red-700 mb-3">
+                清理阅读记录、积分、等级、自定义书籍、奖励和音频文件。保留内置教材数据。
+              </p>
+              <button
+                onClick={handleClearAll}
+                disabled={clearing}
+                className="w-full p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition disabled:opacity-50"
+              >
+                {clearing ? '清理中...' : '清理所有数据'}
+              </button>
+            </div>
+
+            {/* 清理结果提示 */}
+            {clearResult && (
+              <div className={`p-3 rounded-lg text-sm ${clearResult.success ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                {clearResult.message}
+              </div>
             )}
           </div>
         )}

@@ -18,6 +18,12 @@ interface TTSConfig {
   responseFormat: string;
 }
 
+interface BrowserTTSConfig {
+  rate: number;
+  pitch: number;
+  voice: string;
+}
+
 interface AppState {
   books: Book[];
   currentBook: Book | null;
@@ -27,6 +33,7 @@ interface AppState {
   isPlaying: boolean;
   recognizedText: string;
   ttsConfig: TTSConfig;
+  browserTTS: BrowserTTSConfig;
   selectedGrade: string; // 'all' | '1' | '2' | '3' | '4' | '5' | '6'
   
   setBooks: (books: Book[]) => void;
@@ -40,6 +47,7 @@ interface AppState {
   setIsPlaying: (isPlaying: boolean) => void;
   setRecognizedText: (text: string) => void;
   setTTSConfig: (config: Partial<TTSConfig>) => void;
+  setBrowserTTS: (config: Partial<BrowserTTSConfig>) => void;
   setSelectedGrade: (grade: string) => void;
 }
 
@@ -59,6 +67,12 @@ const defaultTTSConfig: TTSConfig = {
   responseFormat: 'wav',
 };
 
+const defaultBrowserTTS: BrowserTTSConfig = {
+  rate: 0.9,
+  pitch: 1.1,
+  voice: '',
+};
+
 export const useStore = create<AppState>()(
   persist(
     (set) => ({
@@ -70,6 +84,7 @@ export const useStore = create<AppState>()(
       isPlaying: false,
       recognizedText: '',
       ttsConfig: defaultTTSConfig,
+      browserTTS: defaultBrowserTTS,
       selectedGrade: 'all',
       
       setBooks: (books) => set({ books }),
@@ -89,11 +104,14 @@ export const useStore = create<AppState>()(
       setTTSConfig: (config) => set((state) => ({ 
         ttsConfig: { ...state.ttsConfig, ...config } 
       })),
+      setBrowserTTS: (config) => set((state) => ({ 
+        browserTTS: { ...state.browserTTS, ...config } 
+      })),
       setSelectedGrade: (grade) => set({ selectedGrade: grade }),
     }),
     {
       name: 'child-reading-storage',
-      partialize: (state) => ({ ttsConfig: state.ttsConfig, selectedGrade: state.selectedGrade }),
+      partialize: (state) => ({ ttsConfig: state.ttsConfig, browserTTS: state.browserTTS, selectedGrade: state.selectedGrade }),
     }
   )
 );

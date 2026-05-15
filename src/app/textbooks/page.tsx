@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Grade, Subject, Semester } from '@/data/lessons';
+import { useStore } from '@/store/useStore';
 
 interface Textbook {
   id: string;
@@ -35,13 +36,14 @@ interface FetchResult {
 
 export default function TextbookLibraryPage() {
   const router = useRouter();
+  const { selectedGrade: globalGrade } = useStore();
   const [fetching, setFetching] = useState(false);
   const [result, setResult] = useState<FetchResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [importing, setImporting] = useState(false);
   const [imported, setImported] = useState<number>(0);
-  const [selectedGrade, setSelectedGrade] = useState<string>('all');
+  const [selectedGrade, setSelectedGrade] = useState<string>(globalGrade);
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
   const [selectedSemester, setSelectedSemester] = useState<string>('all');
   const [dataSource, setDataSource] = useState<'auto' | 'web' | 'local'>('auto');

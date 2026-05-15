@@ -1,0 +1,14 @@
+const fs = require('fs');
+const d = JSON.parse(fs.readFileSync('src/data/textbooks-data.json', 'utf8'));
+const gzb = d.filter(x => x.id.startsWith('gzb'));
+console.log('广州版 总篇数: ' + gzb.length);
+const grades = {};
+gzb.forEach(x => { grades[x.grade] = (grades[x.grade] || 0) + 1; });
+console.log('按年级分布:', JSON.stringify(grades));
+const subs = {};
+gzb.forEach(x => { const k = x.grade + '-' + x.semester; subs[k] = (subs[k] || 0) + 1; });
+console.log('按年级-学期分布:', JSON.stringify(subs));
+console.log('数据总量: ' + d.length);
+const subjects = {};
+d.forEach(x => { subjects[x.subject] = (subjects[x.subject] || 0) + 1; });
+console.log('按科目分布:', JSON.stringify(subjects));

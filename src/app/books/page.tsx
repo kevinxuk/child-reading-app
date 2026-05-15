@@ -5,6 +5,12 @@ import { useRouter } from 'next/navigation';
 import type { Book, ReadingRecord, Reward } from '@/types';
 import { useStore } from '@/store/useStore';
 
+// 年级数字→中文映射（兼容手动创建的书用"三年级"而非"3年级"）
+const GRADE_CHINESE_MAP: Record<string, string> = {
+  '1': '一年级', '2': '二年级', '3': '三年级',
+  '4': '四年级', '5': '五年级', '6': '六年级',
+};
+
 export default function BooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +99,7 @@ export default function BooksPage() {
     const filtered = sortedBooks.filter(b => {
       if (languageFilter !== 'all' && b.language !== languageFilter) return false;
       if (searchQuery && !b.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-      if (selectedGrade !== 'all' && b.grade !== `${selectedGrade}年级`) return false;
+      if (selectedGrade !== 'all' && b.grade !== `${selectedGrade}年级` && b.grade !== GRADE_CHINESE_MAP[selectedGrade]) return false;
       return true;
     });
 
@@ -245,13 +251,16 @@ export default function BooksPage() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 ml-auto">
-            <div className="flex items-center gap-1 px-3 py-1.5 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <span className="text-lg">🪙</span>
-              <span className="text-lg font-bold text-yellow-600">{credits}</span>
-            </div>
-            <button onClick={openExchange} className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-medium hover:bg-yellow-600 transition">积分兑换</button>
-            <button onClick={() => router.push('/textbooks')} className="px-4 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition">课本库</button>
-            <button onClick={() => router.push('/books/new')} className="px-4 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition">添加书籍</button>
+            <button
+              onClick={openExchange}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-yellow-50 border border-yellow-200 rounded-lg hover:bg-yellow-100 transition"
+              title="积分兑换"
+            >
+              <span className="text-base">🪙</span>
+              <span className="text-base font-bold text-yellow-600">{credits}</span>
+            </button>
+            <button onClick={() => router.push('/textbooks')} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-200 transition">课本库</button>
+            <button onClick={() => router.push('/books/new')} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-200 transition">＋ 新书</button>
           </div>
         </div>
 

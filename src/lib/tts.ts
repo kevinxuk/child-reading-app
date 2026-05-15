@@ -57,6 +57,59 @@ export async function checkTTSStatus(): Promise<TTSStatus> {
   };
 }
 
+// 浏览器 SpeechSynthesis 暖机标记（防止首次朗读吞字）
+let _warmupPromise: Promise<void> | null = null;
+
+/**
+ * 冷启动时用一段极短的静音文本激活语音引擎，
+ * 避免后续正式朗读时因音频硬件初始化延迟导致头几个字被吞。
+ */
+async function _ensureEngineWarm(): Promise<void> {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+  if (_warmupPromise) return _warmupPromise;
+
+  _warmupPromise = new Promise((resolve) => {
+    // 先确保 voice 列表已加载
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length === 0) {
+      // 某些浏览器需要事件触发才能加载 voice 列表
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.onvoiceschanged = null;
+      };
+    }
+
+    let warmedUp = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    // 用极短且近无声的短语做暖机
+    const primer = new SpeechSynthesisUtterance('.');
+    primer.volume = 0.01;       // 几乎静音但足以激活引擎
+    primer.rate = 3;            // 快速读完
+    primer.onend = () => {
+      clearTimeout(timer);
+      warmedUp = true;
+      // 不调用 cancel()：暖机只是激活引擎，不要干扰后续朗读
+      resolve();
+    };
+    primer.onerror = () => {
+      clearTimeout(timer);
+      warmedUp = true;
+      resolve();
+    };
+    window.speechSynthesis.speak(primer);
+
+    // 兜底超时：暖机已完成则跳过 cancel，避免误杀后续朗读
+    timer = setTimeout(() => {
+      if (!warmedUp) {
+        window.speechSynthesis.cancel();
+      }
+      resolve();
+    }, 300);
+  });
+
+  return _warmupPromise;
+}
+
 export function speak(text: string, options: TTSOptions = {}): Promise<void> {
   const engine = options.engine ?? 'browser';
 
@@ -68,6 +121,14 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
 }
 
 async function speakWithBrowserTTS(text: string, options: TTSOptions): Promise<void> {
+  // 暖机：防止首段朗读时前面几个字被吞掉
+  await _ensureEngineWarm();
+
+  // 先取消任何正在播放的语音，防止 interrupt 错误
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+
   return new Promise((resolve, reject) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
       reject(new Error('Speech synthesis not supported'));
@@ -89,7 +150,15 @@ async function speakWithBrowserTTS(text: string, options: TTSOptions): Promise<v
     }
 
     utterance.onend = () => resolve();
-    utterance.onerror = (e) => reject(e);
+    utterance.onerror = (e) => {
+      const msg = (e as SpeechSynthesisErrorEvent).error || 'unknown';
+      // "interrupted" 是预期行为（例如手动 stopSpeaking 或被后续朗读打断），不算错误
+      if (msg === 'interrupted') {
+        resolve();
+      } else {
+        reject(new Error(`Speech synthesis error: ${msg}`));
+      }
+    };
 
     window.speechSynthesis.speak(utterance);
   });

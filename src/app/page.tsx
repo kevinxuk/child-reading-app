@@ -39,6 +39,21 @@ export default function Home() {
     }).catch(() => {});
   }, []);
 
+  // 进入页面时预热浏览器 TTS 引擎
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      // 立即触发获取（部分浏览器异步加载语音列表）
+      window.speechSynthesis.getVoices();
+      const onVoicesChanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+      window.speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
+      return () => {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
+      };
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-50">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 text-center">

@@ -8,7 +8,7 @@ import { speak, stopSpeaking, getVoices, LANGUAGE_MAP } from '@/lib/tts';
 import { startRecognition } from '@/lib/asr';
 import { calculateScore } from '@/lib/scoring';
 import type { ScoringResult } from '@/types';
-import TTSConfigModal from '@/components/TTSConfigModal';
+
 
 interface ParagraphScore {
   paragraphIndex: number;
@@ -35,13 +35,9 @@ export default function ReadPage() {
   const [showCompletion, setShowCompletion] = useState(false);
   const [creditEarned, setCreditEarned] = useState(0);
 
-  const [speechRate, setSpeechRate] = useState(0.9);
-  const [speechPitch, setSpeechPitch] = useState(1.1);
-  const [selectedVoice, setSelectedVoice] = useState<string>('');
-  const [browserVoices, setBrowserVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [showTTSConfig, setShowTTSConfig] = useState(false);
 
-  const { ttsConfig, setTTSConfig } = useStore();
+
+  const { ttsConfig, setTTSConfig, browserTTS, setBrowserTTS } = useStore();
   const stopRecognitionRef = useRef<(() => void) | null>(null);
 
   const resolveLang = useCallback((): 'zh-CN' | 'en-US' => {
@@ -64,14 +60,6 @@ export default function ReadPage() {
     if (!langMap) return;
 
     setTTSConfig({ language: langMap.ttsLanguage });
-
-    const voices = getVoices(langMap.browserLang);
-    setBrowserVoices(voices);
-    if (voices.length > 0) {
-      setSelectedVoice(voices[0].name);
-    }
-
-    setSpeechRate(langMap.asrLang === 'en-US' ? 1.0 : 0.9);
   }, [currentBook?.language, setTTSConfig]);
 
   const fetchBook = async () => {
@@ -96,6 +84,20 @@ export default function ReadPage() {
     }
   }, [paragraphs.length]);
 
+  // 进入页面时预热浏览器 TTS 引擎
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      const onVoicesChanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+      window.speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
+      return () => {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
+      };
+    }
+  }, []);
+
   const handlePlayParagraph = useCallback(async () => {
     if (!currentBook || isPlaying) return;
 
@@ -108,9 +110,9 @@ export default function ReadPage() {
       const engine = ttsConfig.enabled ? 'llm' : 'browser';
       await speak(text, {
         lang: resolveLang(),
-        rate: ttsConfig.enabled ? ttsConfig.speed : speechRate,
-        pitch: speechPitch,
-        voice: selectedVoice,
+        rate: ttsConfig.enabled ? ttsConfig.speed : browserTTS.rate,
+        pitch: browserTTS.pitch,
+        voice: browserTTS.voice,
         engine,
         llmConfig: ttsConfig.enabled ? {
           apiUrl: ttsConfig.apiUrl,
@@ -132,7 +134,7 @@ export default function ReadPage() {
     } finally {
       setIsPlaying(false);
     }
-  }, [currentBook, currentParagraph, paragraphs, isPlaying, speechRate, speechPitch, selectedVoice, ttsConfig]);
+  }, [currentBook, currentParagraph, paragraphs, isPlaying, browserTTS, ttsConfig]);
 
   const handleStartReading = useCallback(() => {
     if (!currentBook) return;
@@ -408,15 +410,8 @@ export default function ReadPage() {
          第 {currentParagraph + 1} / {paragraphs.length} 段
          {isCurrentCompleted && <span className="ml-2 text-green-500">✓</span>}
        </p>
-       <div className="flex items-center gap-2">
-         <button
-           onClick={() => setShowTTSConfig(true)}
-           className="text-sm px-3 py-1.5 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition flex items-center gap-1"
-           title="大模型 TTS 设置"
-         >
-           🤖 {ttsConfig.enabled ? '大模型' : '浏览器TTS'}
-         </button>
-         <button
+        <div className="flex items-center gap-2">
+          <button
            onClick={() => router.push('/books')}
            className="text-blue-500 hover:underline text-sm"
          >
@@ -424,17 +419,17 @@ export default function ReadPage() {
          </button>
        </div>
      </div>
-        {ttsConfig.enabled && (
-          <div className="max-w-3xl mx-auto px-4 pb-2">
-            <div className="flex items-center gap-2 text-xs text-purple-600 bg-purple-50 px-3 py-1.5 rounded-lg">
-              <span>🔊 {ttsConfig.voice}</span>
-              <span>·</span>
-              <span>{LANGUAGE_MAP[currentBook.language]?.label ?? '中文'}</span>
-              <span>·</span>
-              <span>语速 {ttsConfig.speed}x</span>
-            </div>
-          </div>
-        )}
+       {ttsConfig.enabled && (
+         <div className="max-w-3xl mx-auto px-4 pb-2">
+           <div className="flex items-center gap-2 text-xs text-purple-600 bg-purple-50 px-3 py-1.5 rounded-lg">
+             <span>🔊 {ttsConfig.voice}</span>
+             <span>·</span>
+             <span>{LANGUAGE_MAP[currentBook.language]?.label ?? '中文'}</span>
+             <span>·</span>
+             <span>语速 {ttsConfig.speed}x</span>
+           </div>
+         </div>
+       )}
         <div className="max-w-3xl mx-auto px-4 pb-2 flex gap-1 overflow-x-auto">
           {paragraphs.map((_, i) => (
             <button
@@ -637,11 +632,6 @@ export default function ReadPage() {
         </div>
       </div>
 
-      <TTSConfigModal
-        isOpen={showTTSConfig}
-        onClose={() => setShowTTSConfig(false)}
-        bookLanguage={currentBook?.language}
-      />
     </div>
   );
 }
