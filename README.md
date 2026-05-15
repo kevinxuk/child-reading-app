@@ -8,7 +8,7 @@
 - **手动录入**：直接输入或粘贴书籍内容
 - **文件导入**：支持 `.txt` / `.md` 文件上传
 - **拍照识别**：通过 OCR（Tesseract.js）自动识别图片中的文字
-- **批量导入**：从内置课程库（人教版语文 1-2 年级、英语 GZB）一键导入课文
+- **批量导入**：从内置课程库（人教版语文 1-6 年级、PEP 英语 2-6 年级）一键导入课文，共 243 篇
 - **拖拽排序**：书架支持拖拽排序和语言筛选
 
 ### 🔊 语音朗读（TTS）
@@ -61,9 +61,8 @@ src/
 ├── components/            # 通用组件
 │   └── TTSConfigModal.tsx # TTS 配置弹窗
 ├── data/                  # 课文数据
-│   ├── lessons.ts         # 语文 1-2 年级课文数据
-│   ├── lessons-g2.ts      # 二年级自动抓取课文
-│   └── lessons-gzb-en.ts  # 英语 GZB 课程数据
+│   ├── textbooks-data.json # 课程库数据（语文 1-6 年级 + PEP英语 2-6 年级，共 243 篇）
+│   └── textbooks-data.md   # 课程库索引文档
 ├── hooks/                 # 自定义 Hooks
 │   └── useAudioRecorder.ts # 音频录制 Hook
 ├── lib/                   # 核心逻辑库
@@ -144,11 +143,18 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-## 脚本
+## 数据填充说明
+
+内置课程库包含 **人教版语文 1-6 年级** 和 **PEP 英语 2-6 年级**，共 **243 篇课文**。
+
+数据存储在 `src/data/textbooks-data.json`，可通过以下脚本填充内容：
 
 ```bash
-# 抓取在线课程数据
-npx ts-node --esm scripts/scrape-lessons.ts
+# 批量填充课文内容（如遇内容为空时使用）
+node fill-content.cjs          # 语文 1-4 年级
+node fill-content-part2.cjs    # 语文 5-6 年级
+node fill-content-part3.cjs    # 语文 6 年级 + PEP 英语 2-3 年级
+node fill-content-part4.cjs    # PEP 英语 4-6 年级
 ```
 
 ## 许可
