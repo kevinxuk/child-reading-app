@@ -59,7 +59,9 @@ src/
 │       ├── credits/       # 积分系统
 │       └── rewards/       # 奖励系统
 ├── components/            # 通用组件
-│   └── TTSConfigModal.tsx # TTS 配置弹窗
+│   ├── SettingsModal.tsx  # 应用设置（含 TTS 配置、主题等）
+│   ├── Navbar.tsx         # 顶栏导航
+│   └── ...
 ├── data/                  # 课文数据
 │   ├── textbooks-data.json # 课程库数据（语文 1-6 年级 + PEP英语 2-6 年级，共 243 篇）
 │   └── textbooks-data.md   # 课程库索引文档
@@ -127,10 +129,11 @@ npm run dev
 
 默认使用浏览器 TTS（无需配置）。若需使用 AI 语音：
 
-1. 在阅读页面点击设置按钮打开 TTS 配置
-2. 填写 LLM TTS 服务地址（如本地 ChatTTS 或 CosyVoice）
-3. 选择语音角色和参数
-4. 点击"测试连接"验证
+1. 在顶栏导航点击 ⚙️ 图标打开设置
+2. 切至 **TTS 设置** 标签页
+3. 填写 LLM TTS 服务地址（如本地 ChatTTS 或 CosyVoice）
+4. 选择语音角色和参数
+5. 点击"测试连接"验证
 
 ## 数据存储
 
